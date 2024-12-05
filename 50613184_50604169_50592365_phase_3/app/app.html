@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cosmetics Recommendation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #49ea67;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            max-width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensures consistent sizing */
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .results table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .results th, .results td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .results th {
+            background-color: #f4f4f4;
+        }
+        .note {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cosmetics Recommendation System</h1>
+        <form id="recommendForm">
+            <label for="skinType">Skin Type:</label>
+            <select id="skinType">
+                <option value="Combination">Combination</option>
+                <option value="Dry">Dry</option>
+                <option value="Oily">Oily</option>
+                <option value="Normal">Normal</option>
+                <option value="Sensitive">Sensitive</option>
+            </select>
+            <label for="budget">Budget (Max Price):</label>
+            <input type="number" id="budget" placeholder="Enter your budget" required>
+            <label for="primaryCategory">Primary Category:</label>
+            <input type="text" id="primaryCategory" placeholder="e.g., Makeup Products">
+            <label for="subCategory">Sub Category:</label>
+            <input type="text" id="subCategory" placeholder="e.g., Lip Color">
+            <label for="label">Label:</label>
+            <input type="text" id="label" placeholder="e.g., Moisturizer">
+            <button type="submit">Get Recommendations</button>
+        </form>
+        <div class="results">
+            <h2>Recommendations</h2>
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Primary Category</th>
+                        <th>Sub Category</th>
+                        <th>Label</th>
+                        <th>Rank</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Recommendations will be displayed here -->
+                </tbody>
+            </table>
+            <p class="note">Note: Recommendations are prioritized based on the lowest chemical score for safety, followed by the highest rank.</p>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
