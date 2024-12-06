@@ -1,20 +1,17 @@
 document.getElementById('recommendForm').addEventListener('submit', async function (e) {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
 
-    // Get input values
     const skinType = document.getElementById('skinType').value;
     const budget = document.getElementById('budget').value;
     const primaryCategory = document.getElementById('primaryCategory').value;
     const subCategory = document.getElementById('subCategory').value;
     const label = document.getElementById('label').value;
 
-    // Validate budget
     if (!budget || parseInt(budget) <= 0) {
         alert('Please enter a valid budget greater than 0.');
         return;
     }
 
-    // Prepare the request payload
     const payload = {
         skin_type: skinType,
         budget: parseFloat(budget),
@@ -24,14 +21,12 @@ document.getElementById('recommendForm').addEventListener('submit', async functi
     };
 
     try {
-        // Call the Flask API deployed on Fly.io
-        const response = await fetch('https://dic-project.fly.dev/recommend', { // Update API URL
+        const response = await fetch('http://127.0.0.1:5000/recommend', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
 
-        // Handle response
         if (response.ok) {
             const data = await response.json();
             displayResults(data);
@@ -45,10 +40,16 @@ document.getElementById('recommendForm').addEventListener('submit', async functi
     }
 });
 
-// Function to display recommendations in the table
 function displayResults(recommendations) {
     const tableBody = document.getElementById('resultsTable').querySelector('tbody');
-    tableBody.innerHTML = ''; // Clear existing results
+    tableBody.innerHTML = '';
+
+    if (!recommendations.length) {
+        const row = document.createElement('tr');
+        row.innerHTML = '<td colspan="6">No recommendations found.</td>';
+        tableBody.appendChild(row);
+        return;
+    }
 
     recommendations.forEach((rec) => {
         const row = document.createElement('tr');

@@ -43,3 +43,26 @@ CODE START - CELL 287
 ANALYSIS - BEFORE CELL 287,288 / AFTER CELL 291
 
 src/ contains all ipynb code , pdf file with output, cosmetics dataset, chemicals-in-cosmetics dataset, merged-data dataset & README file
+
+################################################### PHASE 3 ###############################################################################################
+
+DIC PROJECT PHASE 3 RUNNING THE CODE ON LOCAL MACHINE:-
+
+1) clone the GitHub repo
+
+2) Run the "database_setup.py" to create a sqllite3 database for storage
+
+3) Run the "app.py" file to run flask
+
+4) Try to have extensions such as "live server" and "sqllite viewer" on vscode for easier use
+
+5) Now click on the app.html file OR in vscode right click on app.html -> click on "open with live server" . This prompts open a new page
+
+6) Enter the prompts as you see fit. Data will be displayed
+
+7) Go back to the "recommendations.db" and click to see the data being stored
+
+
+*) It is also possible to upload the code on a container and try to get it on online but containers costs money to store . Also to combat CORS some steps need to be taken to make sure we dont get the 405 http errors. I would recommend fly.io for such operations
+
+*)Have also tested the responses on postman and it works as intended with the POST and GET calls working. For POST we need to give the body and content type as application/json
